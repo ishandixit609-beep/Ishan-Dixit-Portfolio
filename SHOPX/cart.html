@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart — ShopX</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo"><a href="index.html">ShopX</a></div>
+  <div class="search-bar"><input type="text" placeholder="Search for products, brands..."></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <div class="menu">
+      <a href="#">Categories</a>
+      <div class="dropdown">
+        <a href="electronics.html">Electronics</a>
+        <a href="fashion.html">Fashion</a>
+        <a href="accessories.html">Accessories</a>
+      </div>
+    </div>
+    <a href="offers.html">Deals</a>
+    <a href="products.html">BestSelling</a>
+    <div class="menu">
+      <a href="#">Account</a>
+      <div class="dropdown">
+        <a href="login.html">Login</a>
+        <a href="dashboard.html">Profile</a>
+      </div>
+    </div>
+    <a href="cart.html" class="cart-nav-link" style="color:var(--clr-accent);font-weight:600;font-size:0.9rem;">
+      🛒 Cart<span class="cart-badge" id="cartCount">0</span>
+    </a>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="section-header" style="margin-bottom:var(--sp-6)">
+    <div>
+      <div class="label">Your Selection</div>
+      <h2>Shopping Cart 🛒</h2>
+    </div>
+    <a href="index.html" class="see-all">← Continue Shopping</a>
+  </div>
+
+  <div class="cart-layout">
+    <div class="cart-items" id="cartItemsContainer">
+      <!-- Populated by script.js -->
+    </div>
+    <div class="cart-summary" id="cartSummary">
+      <!-- Populated by script.js -->
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section"><h3>ShopX</h3><p>Your one-stop shop for fashion, electronics and accessories.</p></div>
+    <div class="footer-section"><h4>Quick Links</h4><a href="index.html">Home</a><a href="products.html">BestSelling</a><a href="offers.html">Deals</a></div>
+    <div class="footer-section"><h4>Customer Support</h4><a href="#">Contact Us</a><a href="#">FAQs</a><a href="#">Returns</a></div>
+    <div class="footer-section"><h4>Follow Us</h4><a href="https://www.instagram.com/csi_tsec" target="_blank">Instagram</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 ShopX. All Rights Reserved.</p></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
