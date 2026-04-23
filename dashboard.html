@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body{
+      background: linear-gradient(135deg,#000000,#0f2027);
+      color: white;
+    }
+
+    header{
+      background: rgba(0,0,0,0.8);
+    }
+
+    .container h1{
+      margin-bottom: 20px;
+    }
+
+    /* DARK CARDS */
+    .card{
+      background: #111;
+      color: white;
+      border: 1px solid #00ff99;
+    }
+
+    .card h3{
+      color: #00ff99;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <!-- LOGO (click → home) -->
+  <div class="logo">
+    <a href="index.html">ShopX</a>
+  </div>
+
+  <!-- SEARCH BAR (CENTER) -->
+  <div class="search-bar">
+    <input type="text" placeholder="Search for products...">
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html">Home</a>
+
+    <div class="menu">
+<a href="#">Categories</a>
+      <div class="dropdown">
+
+        <div class="submenu">
+      <a href="#">Footwear▸</a>
+      <div class="sub-dropdown">
+        <a href="#">Casual Footwear</a>
+        <a href="#">Performance Footwear</a>
+        <a href="#">Sandals</a>
+        <a href="#">Formal Footwear</a>
+        <a href="#">Boots</a>
+        <a href="#">Traditional Footwear</a>
+      </div>
+    </div>
+
+    <div class="submenu">
+      <a href="#">Jewellery</a>
+      <div class="sub-dropdown">
+        <a href="#">Bracelets</a>
+        <a href="#">Necklaces</a>
+        <a href="#">Earrings</a>
+        <a href="#">Rings</a>
+        <a href="#">Brooches & Pins</a>
+        <a href="#">Anklets</a>
+      </div>
+    </div>
+
+        <div class="submenu">
+      <a href="#">Consumer Electronics▸</a>
+      <div class="sub-dropdown">
+        <a href="#">Audio Accessories</a>
+        <a href="#">Chargers</a>
+        <a href="#">Gaming Accessories</a>
+        <a href="#">Appliances</a>
+        <a href="#">Smart Devices</a>
+        <a href="#">Cables</a>
+      </div>
+    </div>
+
+
+        <div class="submenu">
+      <a href="#">Home▸</a>
+      <div class="sub-dropdown">
+        <a href="#">Furniture</a>
+        <a href="#">Home and Furniture Accessories</a>
+        <a href="#">Home Decor</a>
+      </div>
+    </div>
+
+
+        <div class="submenu">
+      <a href="#">Accessories ▸</a>
+      <div class="sub-dropdown">
+        <a href="#">Bags</a>
+        <a href="#">Jewellery</a>
+        <a href="#">Wearables</a>
+        <a href="#">Watch Accessories</a>
+        <a href="#">Eyewear</a>
+        <a href="#">Footwear Accessories</a>
+        <a href="#">Luggage</a>
+        <a href="#">Kitchen Wear</a>
+      </div>
+    </div>
+      </div>
+    </div>
+    <a href="index.html#deals">Deals</a>
+    <a href="index.html#bestseller">BestSelling</a>
+
+    <div class="menu">
+      <a href="#">Account</a>
+      <div class="dropdown">
+        <a href="login.html">Login</a>
+        <a href="dashboard.html">Profile</a>
+      </div>
+    </div>
+    <a href="cart.html" class="cart-nav-link" style="color:var(--clr-accent);font-weight:600;font-size:0.9rem;">
+      🛒 Cart<span class="cart-badge" id="cartCount">0</span>
+    </a>
+  </nav>
+</header>
+
+<div class="container">
+  <h1>Welcome 👤!!</h1>
+
+  <div class="card">
+    <h3>Your Cart 🛒</h3>
+    <p>Items you added will appear here</p>
+  </div>
+
+</div>
+
+</body>
+</html>
