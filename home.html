@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home — ShopX</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero{background:linear-gradient(135deg,rgba(77,166,255,0.15) 0%,rgba(0,229,160,0.08) 100%);border-bottom:1px solid var(--clr-border);padding:var(--sp-7);text-align:center;}
+    .page-hero .label{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--clr-accent);margin-bottom:8px;}
+    .page-hero h1{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.5rem);font-weight:900;letter-spacing:-0.02em;margin-bottom:var(--sp-3);}
+    .page-hero p{color:var(--clr-text-muted);font-size:1rem;max-width:500px;margin:0 auto;}
+    .filter-tabs{display:flex;gap:var(--sp-3);overflow-x:auto;padding:var(--sp-5) var(--sp-7);scrollbar-width:none;background:rgba(255,255,255,0.02);border-bottom:1px solid var(--clr-border);}
+    .filter-tabs::-webkit-scrollbar{display:none;}
+    .filter-tab{flex-shrink:0;padding:10px 22px;border-radius:var(--r-pill);border:1px solid var(--clr-border);background:rgba(255,255,255,0.04);color:var(--clr-text-muted);font-size:0.85rem;font-weight:600;cursor:pointer;transition:var(--t-base);text-decoration:none;}
+    .filter-tab:hover{border-color:var(--clr-accent);color:var(--clr-text-primary);}
+    .filter-tab.active{background:var(--clr-accent);border-color:var(--clr-accent);color:#000;}
+    .cat-section{padding:var(--sp-7);border-bottom:1px solid var(--clr-border);}
+    .cat-section:last-of-type{border-bottom:none;}
+    .cat-section-header{display:flex;align-items:center;gap:var(--sp-4);margin-bottom:var(--sp-5);}
+    .cat-section-header h2{font-family:var(--font-display);font-size:1.6rem;font-weight:700;border-left:4px solid var(--clr-accent);padding-left:var(--sp-4);}
+    .cat-section-header span{font-size:0.8rem;color:var(--clr-text-muted);}
+    .scroll-row-wrapper{position:relative;}
+    .scroll-row{display:flex;gap:var(--sp-4);overflow-x:auto;scroll-behavior:smooth;padding-bottom:var(--sp-3);scrollbar-width:none;}
+    .scroll-row::-webkit-scrollbar{display:none;}
+    .scroll-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;background:rgba(10,15,30,0.9);backdrop-filter:blur(8px);border:1px solid var(--clr-border);color:white;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--t-base);font-size:1rem;opacity:0;}
+    .scroll-row-wrapper:hover .scroll-arrow{opacity:1;}
+    .scroll-arrow:hover{background:var(--clr-accent);border-color:var(--clr-accent);}
+    .scroll-arrow.left{left:-16px;}.scroll-arrow.right{right:-16px;}
+    .product-card{background:var(--clr-surface-solid);color:var(--clr-text-dark);border-radius:var(--r-lg);padding:var(--sp-3);box-shadow:var(--shadow-sm);transition:transform var(--t-base),box-shadow var(--t-base);overflow:hidden;flex-shrink:0;width:220px;}
+    .product-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);}
+    .product-card img{width:100%;height:180px;object-fit:cover;border-radius:var(--r-md);margin-bottom:var(--sp-3);}
+    .product-card h3{font-size:0.9rem;font-weight:600;margin-bottom:var(--sp-1);color:var(--clr-text-dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .product-card .price{font-size:0.95rem;font-weight:700;color:#1a2540;margin-bottom:var(--sp-3);}
+    .product-card .original-price{font-size:0.8rem;color:#999;text-decoration:line-through;margin-left:6px;font-weight:400;}
+    .product-card .discount-badge{display:inline-block;background:#ff4757;color:white;font-size:0.7rem;font-weight:700;padding:2px 7px;border-radius:var(--r-pill);margin-left:6px;}
+    .add-to-cart{display:inline-flex;align-items:center;justify-content:center;background:var(--clr-text-dark);color:#fff;border:none;border-radius:var(--r-sm);padding:9px var(--sp-4);font-size:0.8rem;font-weight:600;width:100%;transition:var(--t-fast);cursor:pointer;}
+    .add-to-cart:hover{background:var(--clr-accent);transform:scale(1.02);}
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo"><a href="index.html">ShopX</a></div>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search products...">
+    <div id="searchResults" class="search-results"></div>
+</div>
+  <nav>
+    <a href="homepage.html">Home</a>
+    <div class="menu">
+      <a href="#">Categories</a>
+      <div class="dropdown">
+        <div class="submenu"><a href="footwear.html">Footwear &#9658;</a><div class="sub-dropdown"><a href="footwear.html#casual">Casual Footwear</a><a href="footwear.html#performance">Performance Footwear</a><a href="footwear.html#sandals">Sandals</a><a href="footwear.html#formal">Formal Footwear</a><a href="footwear.html#boots">Boots</a><a href="footwear.html#traditional">Traditional Footwear</a></div></div>
+        <div class="submenu"><a href="jewellery.html">Jewellery &#9658;</a><div class="sub-dropdown"><a href="jewellery.html#bracelets">Bracelets</a><a href="jewellery.html#necklaces">Necklaces</a><a href="jewellery.html#earrings">Earrings</a><a href="jewellery.html#rings">Rings</a><a href="jewellery.html#brooches">Brooches &amp; Pins</a><a href="jewellery.html#anklets">Anklets</a></div></div>
+        <div class="submenu"><a href="electronics.html">Consumer Electronics &#9658;</a><div class="sub-dropdown"><a href="electronics.html#audio">Audio Accessories</a><a href="electronics.html#chargers">Chargers</a><a href="electronics.html#gaming">Gaming Accessories</a><a href="electronics.html#appliances">Appliances</a><a href="electronics.html#smart">Smart Devices</a><a href="electronics.html#cables">Cables</a></div></div>
+        <div class="submenu"><a href="home.html">Home &#9658;</a><div class="sub-dropdown"><a href="home.html#furniture">Furniture</a><a href="home.html#homeaccessories">Home &amp; Furniture Accessories</a><a href="home.html#decor">Home Decor</a></div></div>
+        <div class="submenu"><a href="accessories.html">Accessories &#9658;</a><div class="sub-dropdown"><a href="accessories.html#bags">Bags</a><a href="accessories.html#jewellery">Jewellery</a><a href="accessories.html#wearables">Wearables</a><a href="accessories.html#watchaccessories">Watch Accessories</a><a href="accessories.html#eyewear">Eyewear</a><a href="accessories.html#footwearaccessories">Footwear Accessories</a><a href="accessories.html#luggage">Luggage</a><a href="accessories.html#kitchenwear">Kitchen Wear</a></div></div>
+      </div>
+    </div>
+    <a href="homepage.html#deals">Deals</a>
+    <a href="homepage.html#bestseller">BestSelling</a>
+    <div class="menu">
+      <a href="#">Account</a>
+      <div class="dropdown">
+        <a href="cart.html" style="color:var(--clr-accent);font-weight:600;font-size:0.9rem;">&#128722; Cart<span class="cart-badge" id="cartCount">0</span></a>
+        <a href="login.html">Login</a>
+        <a href="dashboard.html">Profile</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="page-hero">
+  <div class="label">Your Space, Your Style</div>
+  <h1>Home</h1>
+  <p>Furniture, accessories and decor to furnish, style and transform every corner of your home.</p>
+</div>
+<div class="filter-tabs"><a href="#furniture" class="filter-tab active">All</a><a href="#furniture" class="filter-tab">Furniture</a><a href="#homeaccessories" class="filter-tab">Home & Furniture Accessories</a><a href="#decor" class="filter-tab">Home Decor</a></div>
+
+<div class="cat-section" id="furniture">
+  <div class="cat-section-header"><h2>Furniture</h2><span>Comfort meets design</span></div>
+  <div class="scroll-row-wrapper">
+    <button class="scroll-arrow left" onclick="scrollRow('furn-row','left')">&#8592;</button>
+    <div class="scroll-row" id="furn-row">
+
+    <div class="product-card" id="3-seater-fabric-sofa" data-name="3-Seater Fabric Sofa"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80" alt="3-Seater Fabric Sofa"><h3>3-Seater Fabric Sofa</h3><p class="price">&#8377;24,999 <span class="original-price">&#8377;34,999</span><span class="discount-badge">29% OFF</span></p><button class="add-to-cart" onclick="addToCart('3-Seater Fabric Sofa',24999,'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80')">Add to Cart</button></div>
+    <div class="product-card" id="wooden-study-table" data-name="Wooden Study Table"><img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&q=80" alt="Wooden Study Table"><h3>Wooden Study Table</h3><p class="price">&#8377;6,999 <span class="original-price">&#8377;9,999</span><span class="discount-badge">30% OFF</span></p><button class="add-to-cart" onclick="addToCart('Wooden Study Table',6999,'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&q=80')">Add to Cart</button></div>
+    <div class="product-card" id="5-tier-bookshelf" data-name="5-Tier Bookshelf"><img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=400&q=80" alt="5-Tier Bookshelf"><h3>5-Tier Bookshelf</h3><p class="price">&#8377;5,499 <span class="original-price">&#8377;7,999</span><span class="discount-badge">31% OFF</span></p><button class="add-to-cart" onclick="addToCart('5-Tier Bookshelf',5499,'https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=400&q=80')">Add to Cart</button></div>
+    <div class="product-card" id="queen-bed-frame" data-name="Queen Bed Frame"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80" alt="Queen Bed Frame"><h3>Queen Bed Frame</h3><p class="price">&#8377;18,999 <span class="original-price">&#8377;27,999</span><span class="discount-badge">32% OFF</span></p><button class="add-to-cart" onclick="addToCart('Queen Bed Frame',18999,'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80')">Add to Cart</button></div>
+    <div class="product-card" id="recliner-arm-chair" data-name="Recliner Arm Chair"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80" alt="Recliner Arm Chair"><h3>Recliner Arm Chair</h3><p class="price">&#8377;12,999 <span class="original-price">&#8377;18,999</span><span class="discount-badge">31% OFF</span></p><button class="add-to-cart" onclick="addToCart('Recliner Arm Chair',12999,'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80')">Add to Cart</button></div></div>
+    
+    <button class="scroll-arrow right" onclick="scrollRow('furn-row','right')">&#8594;</button>
+  </div>
+</div>
+<div class="cat-section" id="homeaccessories">
+  <div class="cat-section-header"><h2>Home & Furniture Accessories</h2><span>Finishing touches</span></div>
+  <div class="scroll-row-wrapper">
+    <button class="scroll-arrow left" onclick="scrollRow('hacc-row','left')">&#8592;</button>
+    <div class="scroll-row" id="hacc-row">
+
+    <div class="product-card" id="set-of-5-cushion-covers" data-name="Set of 5 Cushion Covers"><img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=400&q=80" alt="Set of 5 Cushion Covers"><h3>Set of 5 Cushion Covers</h3><p class="price">&#8377;899 <span class="original-price">&#8377;1,299</span><span class="discount-badge">31% OFF</span></p><button class="add-to-cart" onclick="addToCart('Set of 5 Cushion Covers',899,'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=400&q=80')">Add to Cart</button></div>
+    <div class="product-card" id="ceramic-table-lamp" data-name="Ceramic Table Lamp"><img src="https://images.unsplash.com/photo-1601084881623-cdf9a8ea242c?w=400&q=80" alt="Ceramic Table Lamp"><h3>Ceramic Table Lamp</h3><p class="price">&#8377;1,799 <span class="original-price">&#8377;2,699</span><span class="discount-badge">33% OFF</span></p><button class="add-to-cart" onclick="addToCart('Ceramic Table Lamp',1799,'https://images.unsplash.com/photo-1601084881623-cdf9a8ea242c?w=400&q=80')">Add to Cart</button></div>
+    <div class="product-card" id="woven-storage-basket" data-name="Woven Storage Basket"><img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=400&q=80" alt="Woven Storage Basket"><h3>Woven Storage Basket</h3><p class="price">&#8377;649 <span class="original-price">&#8377;999</span><span class="discount-badge">35% OFF</span></p><button class="add-to-cart" onclick="addToCart('Woven Storage Basket',649,'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=400&q=80')">Add to Cart</button></div>
+    <div class="product-card" id="floating-wall-shelf" data-name="Floating Wall Shelf"><img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=400&q=80" alt="Floating Wall Shelf"><h3>Floating Wall Shelf</h3><p class="price">&#8377;1,299 <span class="original-price">&#8377;1,999</span><span class="discount-badge">35% OFF</span></p><button class="add-to-cart" onclick="addToCart('Floating Wall Shelf',1299,'https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=400&q=80')">Add to Cart</button></div>
+    <div class="product-card" id="curtain-set-2-panels" data-name="Curtain Set (2 Panels)"><img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=400&q=80" alt="Curtain Set (2 panels)"><h3>Curtain Set (2 panels)</h3><p class="price">&#8377;1,499 <span class="original-price">&#8377;2,199</span><span class="discount-badge">32% OFF</span></p><button class="add-to-cart" onclick="addToCart('Curtain Set (2 panels)',1499,'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=400&q=80')">Add to Cart</button></div></div>
+    
+    <button class="scroll-arrow right" onclick="scrollRow('hacc-row','right')">&#8594;</button>
+  </div>
+</div>
+<div class="cat-section" id="decor">
+  <div class="cat-section-header"><h2>Home Decor</h2><span>Transform your space</span></div>
+  <div class="scroll-row-wrapper">
+    <button class="scroll-arrow left" onclick="scrollRow('decor-row','left')">&#8592;</button>
+    <div class="scroll-row" id="decor-row">
+
+    <div class="product-card" id="abstract-canvas-wall-art" data-name="Abstract Canvas Wall Art"><img src="https://images.unsplash.com/photo-1582582494705-f8ce0b0c24f3?w=400&q=80" alt="Abstract Canvas Wall Art"><h3>Abstract Canvas Wall Art</h3><p class="price">&#8377;1,499 <span class="original-price">&#8377;2,199</span><span class="discount-badge">32% OFF</span></p><button class="add-to-cart" onclick="addToCart('Abstract Canvas Wall Art',1499,'https://images.unsplash.com/photo-1582582494705-f8ce0b0c24f3?w=400&q=80')">Add to Cart</button></div>
+    <div class="product-card" id="artificial-indoor-plant" data-name="Artificial Indoor Plant"><img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400&q=80" alt="Artificial Indoor Plant"><h3>Artificial Indoor Plant</h3><p class="price">&#8377;999 <span class="original-price">&#8377;1,499</span><span class="discount-badge">33% OFF</span></p><button class="add-to-cart" onclick="addToCart('Artificial Indoor Plant',999,'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400&q=80')">Add to Cart</button></div>
+    <div class="product-card" id="scented-candle-set-3pc" data-name="Scented Candle (3 Piece)"><img src="https://images.unsplash.com/photo-1602874801007-aa6baf3f5e72?w=400&q=80" alt="Scented Candle Set (3pc)"><h3>Scented Candle Set (3pc)</h3><p class="price">&#8377;799 <span class="original-price">&#8377;1,199</span><span class="discount-badge">33% OFF</span></p><button class="add-to-cart" onclick="addToCart('Scented Candle Set (3pc)',799,'https://images.unsplash.com/photo-1602874801007-aa6baf3f5e72?w=400&q=80')">Add to Cart</button></div>
+    <div class="product-card" id="decorative-mirror-round" data-name="Decorative Mirror Round"><img src="https://images.unsplash.com/photo-1582582494705-f8ce0b0c24f3?w=400&q=80" alt="Decorative Mirror Round"><h3>Decorative Mirror Round</h3><p class="price">&#8377;2,499 <span class="original-price">&#8377;3,699</span><span class="discount-badge">33% OFF</span></p><button class="add-to-cart" onclick="addToCart('Decorative Mirror Round',2499,'https://images.unsplash.com/photo-1582582494705-f8ce0b0c24f3?w=400&q=80')">Add to Cart</button></div>
+    <div class="product-card" id="macrame-wall-hanging" data-name="Macrame Wall Hanging"><img src="https://images.unsplash.com/photo-1582582494705-f8ce0b0c24f3?w=400&q=80" alt="Macrame Wall Hanging"><h3>Macrame Wall Hanging</h3><p class="price">&#8377;1,199 <span class="original-price">&#8377;1,799</span><span class="discount-badge">33% OFF</span></p><button class="add-to-cart" onclick="addToCart('Macrame Wall Hanging',1199,'https://images.unsplash.com/photo-1582582494705-f8ce0b0c24f3?w=400&q=80')">Add to Cart</button></div></div>
+    
+    <button class="scroll-arrow right" onclick="scrollRow('decor-row','right')">&#8594;</button>
+  </div>
+</div>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section"><h3>ShopX</h3><p>Your one-stop shop for fashion, electronics and accessories. Authentic brands, unbeatable prices.</p></div>
+    <div class="footer-section"><h4>Quick Links</h4><a href="index.html">Home</a><a href="index.html#bestseller">BestSelling</a><a href="index.html#deals">Deals</a><a href="cart.html">My Cart</a></div>
+    <div class="footer-section"><h4>Customer Support</h4><a href="#">Contact Us</a><a href="#">FAQs</a><a href="terms.html">Terms &amp; Policies</a><a href="#">Returns</a></div>
+    <div class="footer-section"><h4>Follow Us</h4><a href="https://www.instagram.com/csi_tsec" target="_blank">Instagram</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; 2026 ShopX. All Rights Reserved.</p></div>
+</footer>
+<script src="script.js"></script>
+<script>
+  document.querySelectorAll('.filter-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+</script>
+</body>
+window.addEventListener("load", () => {
+  const params = new URLSearchParams(window.location.search);
+  const productId = params.get("product");
+
+  if (!productId) return;
+
+  const product = document.getElementById(productId);
+
+  if (product) {
+    product.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+    product.classList.add("highlight-product");
+
+    setTimeout(() => {
+      product.classList.remove("highlight-product");
+    }, 1800);
+  }
+});
+</html>

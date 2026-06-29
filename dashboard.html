@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body{
+      background: linear-gradient(135deg,#000000,#0f2027);
+      color: white;
+    }
+
+    header{
+      background: rgba(0,0,0,0.8);
+    }
+
+    .container h1{
+      margin-bottom: 20px;
+    }
+
+    /* DARK CARDS */
+    .card{
+      background: #111;
+      color: white;
+      border: 1px solid #00ff99;
+    }
+
+    .card h3{
+      color: #00ff99;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <!-- LOGO (click → home) -->
+  <div class="logo">
+    <a href="index.html">ShopX</a>
+  </div>
+
+  <!-- SEARCH BAR (CENTER) -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search products...">
+    <div id="searchResults" class="search-results"></div>
+</div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="homepage.html">Home</a>
+
+    <div class="menu">
+<a href="#">Categories</a>
+      <div class="dropdown">
+
+        <!-- FOOTWEAR -->
+        <div class="submenu">
+          <a href="footwear.html">Footwear ▸</a>
+          <div class="sub-dropdown">
+            <a href="footwear.html#casual">Casual Footwear</a>
+            <a href="footwear.html#performance">Performance Footwear</a>
+            <a href="footwear.html#sandals">Sandals</a>
+            <a href="footwear.html#formal">Formal Footwear</a>
+            <a href="footwear.html#boots">Boots</a>
+            <a href="footwear.html#traditional">Traditional Footwear</a>
+          </div>
+        </div>
+ 
+        <!-- JEWELLERY -->
+        <div class="submenu">
+          <a href="jewellery.html">Jewellery ▸</a>
+          <div class="sub-dropdown">
+            <a href="jewellery.html#bracelets">Bracelets</a>
+            <a href="jewellery.html#necklaces">Necklaces</a>
+            <a href="jewellery.html#earrings">Earrings</a>
+            <a href="jewellery.html#rings">Rings</a>
+            <a href="jewellery.html#brooches">Brooches &amp; Pins</a>
+            <a href="jewellery.html#anklets">Anklets</a>
+          </div>
+        </div>
+ 
+        <!-- CONSUMER ELECTRONICS -->
+        <div class="submenu">
+          <a href="electronics.html">Consumer Electronics ▸</a>
+          <div class="sub-dropdown">
+            <a href="electronics.html#audio">Audio Accessories</a>
+            <a href="electronics.html#chargers">Chargers</a>
+            <a href="electronics.html#gaming">Gaming Accessories</a>
+            <a href="electronics.html#appliances">Appliances</a>
+            <a href="electronics.html#smart">Smart Devices</a>
+            <a href="electronics.html#cables">Cables</a>
+          </div>
+        </div>
+ 
+        <!-- HOME -->
+        <div class="submenu">
+          <a href="home.html">Home ▸</a>
+          <div class="sub-dropdown">
+            <a href="home.html#furniture">Furniture</a>
+            <a href="home.html#homeaccessories">Home &amp; Furniture Accessories</a>
+            <a href="home.html#decor">Home Decor</a>
+          </div>
+        </div>
+ 
+        <!-- ACCESSORIES -->
+        <div class="submenu">
+          <a href="accessories.html">Accessories ▸</a>
+          <div class="sub-dropdown">
+            <a href="accessories.html#bags">Bags</a>
+            <a href="accessories.html#jewellery">Jewellery</a>
+            <a href="accessories.html#wearables">Wearables</a>
+            <a href="accessories.html#watchaccessories">Watch Accessories</a>
+            <a href="accessories.html#eyewear">Eyewear</a>
+            <a href="accessories.html#footwearaccessories">Footwear Accessories</a>
+            <a href="accessories.html#luggage">Luggage</a>
+            <a href="accessories.html#kitchenwear">Kitchen Wear</a>
+      </div>
+    </div>
+      </div>
+    </div>
+    <a href="homepage.html#deals">Deals</a>
+    <a href="homepage.html#bestseller">BestSelling</a>
+
+    <div class="menu">
+      <a href="#">Account</a>
+      <div class="dropdown">
+        <a href="login.html">Login</a>
+        <a href="dashboard.html">Profile</a>
+      </div>
+    </div>
+    <a href="cart.html" class="cart-nav-link" style="color:var(--clr-accent);font-weight:600;font-size:0.9rem;">
+      🛒 Cart<span class="cart-badge" id="cartCount">0</span>
+    </a>
+  </nav>
+</header>
+
+<div class="container">
+  <h1>Welcome 👤!!</h1>
+
+  <div class="card">
+    <h3>Your Cart 🛒</h3>
+    <p>Items you added will appear here</p>
+  </div>
+
+</div>
+
+</body>
+</html>
