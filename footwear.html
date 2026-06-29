@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Footwear — ShopX</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, rgba(77,166,255,0.15) 0%, rgba(0,229,160,0.08) 100%);
+      border-bottom: 1px solid var(--clr-border);
+      padding: var(--sp-7) var(--sp-7);
+      text-align: center;
+    }
+    .page-hero .label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--clr-accent); margin-bottom: 8px; }
+    .page-hero h1 { font-family: var(--font-display); font-size: clamp(2rem,5vw,3.5rem); font-weight: 900; letter-spacing: -0.02em; margin-bottom: var(--sp-3); }
+    .page-hero p { color: var(--clr-text-muted); font-size: 1rem; max-width: 500px; margin: 0 auto; }
+
+    .filter-tabs { display: flex; gap: var(--sp-3); overflow-x: auto; padding: var(--sp-5) var(--sp-7); scrollbar-width: none; background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--clr-border); }
+    .filter-tabs::-webkit-scrollbar { display: none; }
+    .filter-tab { flex-shrink: 0; padding: 10px 22px; border-radius: var(--r-pill); border: 1px solid var(--clr-border); background: rgba(255,255,255,0.04); color: var(--clr-text-muted); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: var(--t-base); text-decoration: none; }
+    .filter-tab:hover { border-color: var(--clr-accent); color: var(--clr-text-primary); }
+    .filter-tab.active { background: var(--clr-accent); border-color: var(--clr-accent); color: #000; }
+
+    .cat-section { padding: var(--sp-7) var(--sp-7); border-bottom: 1px solid var(--clr-border); }
+    .cat-section:last-child { border-bottom: none; }
+    .cat-section-header { display: flex; align-items: center; gap: var(--sp-4); margin-bottom: var(--sp-5); }
+    .cat-section-header h2 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; border-left: 4px solid var(--clr-accent); padding-left: var(--sp-4); }
+    .cat-section-header span { font-size: 0.8rem; color: var(--clr-text-muted); }
+
+    .scroll-row-wrapper { position: relative; }
+    .scroll-row { display: flex; gap: var(--sp-4); overflow-x: auto; scroll-behavior: smooth; padding-bottom: var(--sp-3); scrollbar-width: none; }
+    .scroll-row::-webkit-scrollbar { display: none; }
+    .scroll-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; background: rgba(10,15,30,0.9); backdrop-filter: blur(8px); border: 1px solid var(--clr-border); color: white; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--t-base); font-size: 1rem; opacity: 0; }
+    .scroll-row-wrapper:hover .scroll-arrow { opacity: 1; }
+    .scroll-arrow:hover { background: var(--clr-accent); border-color: var(--clr-accent); }
+    .scroll-arrow.left { left: -16px; } .scroll-arrow.right { right: -16px; }
+
+    .product-card { background: var(--clr-surface-solid); color: var(--clr-text-dark); border-radius: var(--r-lg); padding: var(--sp-3); box-shadow: var(--shadow-sm); transition: transform var(--t-base), box-shadow var(--t-base); overflow: hidden; flex-shrink: 0; width: 220px; }
+    .product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .product-card img { width: 100%; height: 180px; object-fit: cover; border-radius: var(--r-md); margin-bottom: var(--sp-3); }
+    .product-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: var(--sp-1); color: var(--clr-text-dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .product-card .price { font-size: 0.95rem; font-weight: 700; color: #1a2540; margin-bottom: var(--sp-3); }
+    .product-card .original-price { font-size: 0.8rem; color: #999; text-decoration: line-through; margin-left: 6px; font-weight: 400; }
+    .product-card .discount-badge { display: inline-block; background: #ff4757; color: white; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: var(--r-pill); margin-left: 6px; }
+    .add-to-cart { display: inline-flex; align-items: center; justify-content: center; background: var(--clr-text-dark); color: #fff; border: none; border-radius: var(--r-sm); padding: 9px var(--sp-4); font-size: 0.8rem; font-weight: 600; width: 100%; transition: var(--t-fast); cursor: pointer; }
+    .add-to-cart:hover { background: var(--clr-accent); transform: scale(1.02); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><a href="index.html">ShopX</a></div>
+  <div class="search-bar"><input type="text" placeholder="Search for products, brands..."></div>
+  <nav>
+    <a href="homepage.html">Home</a>
+    <div class="menu">
+      <a href="#">Categories</a>
+      <div class="dropdown">
+        <div class="submenu"><a href="footwear.html">Footwear ▸</a><div class="sub-dropdown"><a href="footwear.html#casual">Casual Footwear</a><a href="footwear.html#performance">Performance Footwear</a><a href="footwear.html#sandals">Sandals</a><a href="footwear.html#formal">Formal Footwear</a><a href="footwear.html#boots">Boots</a><a href="footwear.html#traditional">Traditional Footwear</a></div></div>
+        <div class="submenu"><a href="jewellery.html">Jewellery ▸</a><div class="sub-dropdown"><a href="jewellery.html#bracelets">Bracelets</a><a href="jewellery.html#necklaces">Necklaces</a><a href="jewellery.html#earrings">Earrings</a><a href="jewellery.html#rings">Rings</a><a href="jewellery.html#brooches">Brooches &amp; Pins</a><a href="jewellery.html#anklets">Anklets</a></div></div>
+        <div class="submenu"><a href="electronics.html">Consumer Electronics ▸</a><div class="sub-dropdown"><a href="electronics.html#audio">Audio Accessories</a><a href="electronics.html#chargers">Chargers</a><a href="electronics.html#gaming">Gaming Accessories</a><a href="electronics.html#appliances">Appliances</a><a href="electronics.html#smart">Smart Devices</a><a href="electronics.html#cables">Cables</a></div></div>
+        <div class="submenu"><a href="home.html">Home ▸</a><div class="sub-dropdown"><a href="home.html#furniture">Furniture</a><a href="home.html#homeaccessories">Home &amp; Furniture Accessories</a><a href="home.html#decor">Home Decor</a></div></div>
+        <div class="submenu"><a href="accessories.html">Accessories ▸</a><div class="sub-dropdown"><a href="accessories.html#bags">Bags</a><a href="accessories.html#jewellery">Jewellery</a><a href="accessories.html#wearables">Wearables</a><a href="accessories.html#watchaccessories">Watch Accessories</a><a href="accessories.html#eyewear">Eyewear</a><a href="accessories.html#footwearaccessories">Footwear Accessories</a><a href="accessories.html#luggage">Luggage</a><a href="accessories.html#kitchenwear">Kitchen Wear</a></div></div>
+      </div>
+    </div>
+   <a href="homepage.html#deals">Deals</a>
+    <a href="homepage.html#bestseller">BestSelling</a>
+    <div class="menu">
+      <a href="#">Account</a>
+      <div class="dropdown">
+        <a href="cart.html" class="cart-nav-link" style="color:var(--clr-accent);font-weight:600;font-size:0.9rem;">🛒 Cart<span class="cart-badge" id="cartCount">0</span></a>
+        <a href="login.html">Login</a>
+        <a href="dashboard.html">Profile</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <div class="label">Step Into Style</div>
+  <h1>Footwear</h1>
+  <p>From everyday casuals to performance gear — the perfect pair for every occasion.</p>
+</div>
+
+<div class="filter-tabs">
+  <a href="#casual" class="filter-tab active">All</a>
+  <a href="#casual" class="filter-tab">Casual Footwear</a>
+  <a href="#performance" class="filter-tab">Performance</a>
+  <a href="#sandals" class="filter-tab">Sandals</a>
+  <a href="#formal" class="filter-tab">Formal Footwear</a>
+  <a href="#boots" class="filter-tab">Boots</a>
+  <a href="#traditional" class="filter-tab">Traditional</a>
+</div>
+
+<!-- CASUAL FOOTWEAR -->
+<div class="cat-section" id="casual">
+  <div class="cat-section-header">
+    <h2>Casual Footwear</h2>
+    <span>For everyday wear</span>
+  </div>
+  <div class="scroll-row-wrapper">
+    <button class="scroll-arrow left" onclick="scrollRow('casual-row','left')">&#8592;</button>
+    <div class="scroll-row" id="casual-row">
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80" alt="Sneakers"><h3>Nike Air Sneakers</h3><p class="price">₹3,299 <span class="original-price">₹4,999</span><span class="discount-badge">34% OFF</span></p><button class="add-to-cart" onclick="addToCart('Nike Air Sneakers',3299,'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400&q=80" alt="Canvas Shoes"><h3>Canvas Slip-Ons</h3><p class="price">₹1,499 <span class="original-price">₹2,199</span><span class="discount-badge">32% OFF</span></p><button class="add-to-cart" onclick="addToCart('Canvas Slip-Ons',1499,'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&q=80" alt="Loafers"><h3>Casual Loafers</h3><p class="price">₹2,199 <span class="original-price">₹3,499</span><span class="discount-badge">37% OFF</span></p><button class="add-to-cart" onclick="addToCart('Casual Loafers',2199,'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&q=80" alt="Low Tops"><h3>Low Top Trainers</h3><p class="price">₹2,799 <span class="original-price">₹3,999</span><span class="discount-badge">30% OFF</span></p><button class="add-to-cart" onclick="addToCart('Low Top Trainers',2799,'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=400&q=80" alt="Slip On"><h3>Comfort Slip-Ons</h3><p class="price">₹1,899 <span class="original-price">₹2,699</span><span class="discount-badge">30% OFF</span></p><button class="add-to-cart" onclick="addToCart('Comfort Slip-Ons',1899,'https://images.unsplash.com/photo-1556906781-9a412961c28c?w=400&q=80')">Add to Cart</button></div>
+    </div>
+    <button class="scroll-arrow right" onclick="scrollRow('casual-row','right')">&#8594;</button>
+  </div>
+</div>
+
+<!-- PERFORMANCE FOOTWEAR -->
+<div class="cat-section" id="performance">
+  <div class="cat-section-header">
+    <h2>Performance Footwear</h2>
+    <span>Built for movement</span>
+  </div>
+  <div class="scroll-row-wrapper">
+    <button class="scroll-arrow left" onclick="scrollRow('perf-row','left')">&#8592;</button>
+    <div class="scroll-row" id="perf-row">
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1517260911058-b7a18b2eb02f?w=400&q=80" alt="Running Shoes"><h3>UltraRun Running Shoes</h3><p class="price">₹4,999 <span class="original-price">₹7,499</span><span class="discount-badge">33% OFF</span></p><button class="add-to-cart" onclick="addToCart('UltraRun Running Shoes',4999,'https://images.unsplash.com/photo-1517260911058-b7a18b2eb02f?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80" alt="CrossTrain"><h3>CrossTrain Pro Shoes</h3><p class="price">₹3,799 <span class="original-price">₹5,499</span><span class="discount-badge">31% OFF</span></p><button class="add-to-cart" onclick="addToCart('CrossTrain Pro Shoes',3799,'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&q=80" alt="Trail Shoes"><h3>TrailBlazer Hiking Shoes</h3><p class="price">₹5,499 <span class="original-price">₹7,999</span><span class="discount-badge">31% OFF</span></p><button class="add-to-cart" onclick="addToCart('TrailBlazer Hiking Shoes',5499,'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=400&q=80" alt="Soccer Cleats"><h3>Pro Soccer Cleats</h3><p class="price">₹3,299 <span class="original-price">₹4,999</span><span class="discount-badge">34% OFF</span></p><button class="add-to-cart" onclick="addToCart('Pro Soccer Cleats',3299,'https://images.unsplash.com/photo-1556906781-9a412961c28c?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400&q=80" alt="Yoga Shoes"><h3>FlexFit Yoga Shoes</h3><p class="price">₹1,999 <span class="original-price">₹2,999</span><span class="discount-badge">33% OFF</span></p><button class="add-to-cart" onclick="addToCart('FlexFit Yoga Shoes',1999,'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400&q=80')">Add to Cart</button></div>
+    </div>
+    <button class="scroll-arrow right" onclick="scrollRow('perf-row','right')">&#8594;</button>
+  </div>
+</div>
+
+<!-- SANDALS -->
+<div class="cat-section" id="sandals">
+  <div class="cat-section-header">
+    <h2>Sandals</h2>
+    <span>Breezy &amp; effortless</span>
+  </div>
+  <div class="scroll-row-wrapper">
+    <button class="scroll-arrow left" onclick="scrollRow('sandal-row','left')">&#8592;</button>
+    <div class="scroll-row" id="sandal-row">
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1603487742131-4160ec999306?w=400&q=80" alt="Flip Flops"><h3>Comfort Flip-Flops</h3><p class="price">₹599 <span class="original-price">₹999</span><span class="discount-badge">40% OFF</span></p><button class="add-to-cart" onclick="addToCart('Comfort Flip-Flops',599,'https://images.unsplash.com/photo-1603487742131-4160ec999306?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1562183241-b937e95585b6?w=400&q=80" alt="Sport Sandals"><h3>Sport Strap Sandals</h3><p class="price">₹1,299 <span class="original-price">₹1,999</span><span class="discount-badge">35% OFF</span></p><button class="add-to-cart" onclick="addToCart('Sport Strap Sandals',1299,'https://images.unsplash.com/photo-1562183241-b937e95585b6?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&q=80" alt="Leather Sandals"><h3>Leather Strap Sandals</h3><p class="price">₹1,899 <span class="original-price">₹2,999</span><span class="discount-badge">37% OFF</span></p><button class="add-to-cart" onclick="addToCart('Leather Strap Sandals',1899,'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80" alt="Wedge Sandals"><h3>Wedge Platform Sandals</h3><p class="price">₹2,199 <span class="original-price">₹3,499</span><span class="discount-badge">37% OFF</span></p><button class="add-to-cart" onclick="addToCart('Wedge Platform Sandals',2199,'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80')">Add to Cart</button></div>
+    </div>
+    <button class="scroll-arrow right" onclick="scrollRow('sandal-row','right')">&#8594;</button>
+  </div>
+</div>
+
+<!-- FORMAL FOOTWEAR -->
+<div class="cat-section" id="formal">
+  <div class="cat-section-header">
+    <h2>Formal Footwear</h2>
+    <span>Polished &amp; professional</span>
+  </div>
+  <div class="scroll-row-wrapper">
+    <button class="scroll-arrow left" onclick="scrollRow('formal-row','left')">&#8592;</button>
+    <div class="scroll-row" id="formal-row">
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1614253429340-98120bd6d753?w=400&q=80" alt="Oxford"><h3>Classic Oxford Shoes</h3><p class="price">₹3,999 <span class="original-price">₹5,999</span><span class="discount-badge">33% OFF</span></p><button class="add-to-cart" onclick="addToCart('Classic Oxford Shoes',3999,'https://images.unsplash.com/photo-1614253429340-98120bd6d753?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&q=80" alt="Derby"><h3>Leather Derby Shoes</h3><p class="price">₹4,299 <span class="original-price">₹6,499</span><span class="discount-badge">34% OFF</span></p><button class="add-to-cart" onclick="addToCart('Leather Derby Shoes',4299,'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=400&q=80" alt="Monk Strap"><h3>Monk Strap Shoes</h3><p class="price">₹4,799 <span class="original-price">₹6,999</span><span class="discount-badge">31% OFF</span></p><button class="add-to-cart" onclick="addToCart('Monk Strap Shoes',4799,'https://images.unsplash.com/photo-1556906781-9a412961c28c?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&q=80" alt="Brogues"><h3>Wingtip Brogues</h3><p class="price">₹3,699 <span class="original-price">₹5,499</span><span class="discount-badge">33% OFF</span></p><button class="add-to-cart" onclick="addToCart('Wingtip Brogues',3699,'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&q=80')">Add to Cart</button></div>
+    </div>
+    <button class="scroll-arrow right" onclick="scrollRow('formal-row','right')">&#8594;</button>
+  </div>
+</div>
+
+<!-- BOOTS -->
+<div class="cat-section" id="boots">
+  <div class="cat-section-header">
+    <h2>Boots</h2>
+    <span>Rugged &amp; refined</span>
+  </div>
+  <div class="scroll-row-wrapper">
+    <button class="scroll-arrow left" onclick="scrollRow('boots-row','left')">&#8592;</button>
+    <div class="scroll-row" id="boots-row">
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1605812860427-4024433a70fd?w=400&q=80" alt="Chelsea Boots"><h3>Chelsea Ankle Boots</h3><p class="price">₹4,499 <span class="original-price">₹6,999</span><span class="discount-badge">36% OFF</span></p><button class="add-to-cart" onclick="addToCart('Chelsea Ankle Boots',4499,'https://images.unsplash.com/photo-1605812860427-4024433a70fd?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80" alt="Combat Boots"><h3>Combat Boots</h3><p class="price">₹5,299 <span class="original-price">₹7,999</span><span class="discount-badge">34% OFF</span></p><button class="add-to-cart" onclick="addToCart('Combat Boots',5299,'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1520639888713-7851133b1ed0?w=400&q=80" alt="Hiking Boots"><h3>All-Terrain Hiking Boots</h3><p class="price">₹6,499 <span class="original-price">₹9,499</span><span class="discount-badge">32% OFF</span></p><button class="add-to-cart" onclick="addToCart('All-Terrain Hiking Boots',6499,'https://images.unsplash.com/photo-1520639888713-7851133b1ed0?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&q=80" alt="Cowboy Boots"><h3>Western Cowboy Boots</h3><p class="price">₹5,999 <span class="original-price">₹8,999</span><span class="discount-badge">33% OFF</span></p><button class="add-to-cart" onclick="addToCart('Western Cowboy Boots',5999,'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1614253429340-98120bd6d753?w=400&q=80" alt="Knee High"><h3>Knee High Leather Boots</h3><p class="price">₹6,999 <span class="original-price">₹9,999</span><span class="discount-badge">30% OFF</span></p><button class="add-to-cart" onclick="addToCart('Knee High Leather Boots',6999,'https://images.unsplash.com/photo-1614253429340-98120bd6d753?w=400&q=80')">Add to Cart</button></div>
+    </div>
+    <button class="scroll-arrow right" onclick="scrollRow('boots-row','right')">&#8594;</button>
+  </div>
+</div>
+
+<!-- TRADITIONAL FOOTWEAR -->
+<div class="cat-section" id="traditional">
+  <div class="cat-section-header">
+    <h2>Traditional Footwear</h2>
+    <span>Heritage &amp; craft</span>
+  </div>
+  <div class="scroll-row-wrapper">
+    <button class="scroll-arrow left" onclick="scrollRow('trad-row','left')">&#8592;</button>
+    <div class="scroll-row" id="trad-row">
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1582142839970-2b9e04b60f65?w=400&q=80" alt="Juttis"><h3>Embroidered Juttis</h3><p class="price">₹1,799 <span class="original-price">₹2,499</span><span class="discount-badge">28% OFF</span></p><button class="add-to-cart" onclick="addToCart('Embroidered Juttis',1799,'https://images.unsplash.com/photo-1582142839970-2b9e04b60f65?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1614253429340-98120bd6d753?w=400&q=80" alt="Kolhapuris"><h3>Handcrafted Kolhapuris</h3><p class="price">₹1,599 <span class="original-price">₹2,299</span><span class="discount-badge">30% OFF</span></p><button class="add-to-cart" onclick="addToCart('Handcrafted Kolhapuris',1599,'https://images.unsplash.com/photo-1614253429340-98120bd6d753?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&q=80" alt="Mojaris"><h3>Royal Mojari Slippers</h3><p class="price">₹1,999 <span class="original-price">₹2,799</span><span class="discount-badge">29% OFF</span></p><button class="add-to-cart" onclick="addToCart('Royal Mojari Slippers',1999,'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&q=80')">Add to Cart</button></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&q=80" alt="Nagra"><h3>Classic Nagra Shoes</h3><p class="price">₹1,399 <span class="original-price">₹1,999</span><span class="discount-badge">30% OFF</span></p><button class="add-to-cart" onclick="addToCart('Classic Nagra Shoes',1399,'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&q=80')">Add to Cart</button></div>
+    </div>
+    <button class="scroll-arrow right" onclick="scrollRow('trad-row','right')">&#8594;</button>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section"><h3>ShopX</h3><p>Your one-stop shop for fashion, electronics and accessories. Authentic brands, unbeatable prices.</p></div>
+    <div class="footer-section"><h4>Quick Links</h4><a href="index.html">Home</a><a href="index.html#bestseller">BestSelling</a><a href="index.html#deals">Deals</a><a href="cart.html">My Cart</a></div>
+    <div class="footer-section"><h4>Customer Support</h4><a href="#">Contact Us</a><a href="#">FAQs</a><a href="terms.html">Terms &amp; Policies</a><a href="#">Returns</a></div>
+    <div class="footer-section"><h4>Follow Us</h4><a href="https://www.instagram.com/csi_tsec" target="_blank">Instagram</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 ShopX. All Rights Reserved.</p></div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // Highlight active filter tab on click
+  document.querySelectorAll('.filter-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
